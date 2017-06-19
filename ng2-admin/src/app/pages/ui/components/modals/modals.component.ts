@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DefaultModal } from './default-modal/default-modal.component';
 
@@ -8,7 +8,6 @@ import { DefaultModal } from './default-modal/default-modal.component';
   templateUrl: './modals.html'
 })
 export class Modals {
-
 
   constructor(private modalService: NgbModal) {}
 

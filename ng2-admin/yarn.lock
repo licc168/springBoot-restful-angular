@@ -26,6 +26,12 @@
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-4.0.1.tgz#b9ebdbbb8ace0f9a3bf9e53c299eafdfab1d5041"
 
+"@angular/forms@^4.0.2":
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-4.2.3.tgz#ff770f0a45f37cd99a7c20cedce560d018c9ca3b"
+  dependencies:
+    tslib "^1.7.1"
+
 "@angular/http@4.0.1":
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@angular/http/-/http-4.0.1.tgz#bf87e7da9dc1f1567f246f9a09723e1cc3543d32"
@@ -263,6 +269,20 @@ amdefine@>=0.0.4, amdefine@^1.0.0:
 "ammap3@github:amcharts/ammap3":
   version "3.21.0"
   resolved "https://codeload.github.com/amcharts/ammap3/tar.gz/00086807e39549325fe361336b2289d8fc524753"
+
+angular2-cookie@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/angular2-cookie/-/angular2-cookie-1.2.6.tgz#8fa845531e777adb042fe2f339c0040f6ddbf09d"
+
+angular2-jwt@^0.2.2:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/angular2-jwt/-/angular2-jwt-0.2.3.tgz#54efdda3ceedba85f6a37b165f22ac22b8adf021"
+
+angular2-layer@^2.0.0:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/angular2-layer/-/angular2-layer-2.0.4.tgz#1fb725c2ee53a85bcb18653c4cd0757d33da992d"
+  dependencies:
+    "@angular/forms" "^4.0.2"
 
 angular2-template-loader@0.6.2:
   version "0.6.2"
@@ -1561,7 +1581,7 @@ debug@2.6.1:
   dependencies:
     ms "0.7.2"
 
-debug@2.6.3, debug@^2.1.3, debug@^2.2.0, debug@^2.3.3:
+debug@^2.1.3, debug@^2.2.0, debug@^2.3.3:
   version "2.6.3"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.3.tgz#0f7eb8c30965ec08c72accfa0130c8b79984141d"
   dependencies:
@@ -2168,23 +2188,11 @@ fill-range@^2.1.0:
     repeat-element "^1.1.2"
     repeat-string "^1.5.2"
 
-finalhandler@1.0.0:
+finalhandler@1.0.0, finalhandler@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/finalhandler/-/finalhandler-1.0.0.tgz#b5691c2c0912092f18ac23e9416bde5cd7dc6755"
   dependencies:
     debug "2.6.1"
-    encodeurl "~1.0.1"
-    escape-html "~1.0.3"
-    on-finished "~2.3.0"
-    parseurl "~1.3.1"
-    statuses "~1.3.1"
-    unpipe "~1.0.0"
-
-finalhandler@~1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/finalhandler/-/finalhandler-1.0.1.tgz#bcd15d1689c0e5ed729b6f7f541a6df984117db8"
-  dependencies:
-    debug "2.6.3"
     encodeurl "~1.0.1"
     escape-html "~1.0.3"
     on-finished "~2.3.0"
@@ -3770,11 +3778,7 @@ lowercase-keys@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/lowercase-keys/-/lowercase-keys-1.0.0.tgz#4e3366b39e7f5457e35f1324bdf6f88d0bfc7306"
 
-lru-cache@2:
-  version "2.7.3"
-  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-2.7.3.tgz#6d4524e8b955f95d4f5b58851ce21dd72fb4e952"
-
-lru-cache@2.2.x:
+lru-cache@2, lru-cache@2.2.x:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-2.2.4.tgz#6c658619becf14031d0d0b594b16042ce4dc063d"
 
@@ -3954,7 +3958,7 @@ mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkd
   dependencies:
     minimist "0.0.8"
 
-moment@>=2.14.0, moment@^2.9.0:
+moment@2.18.1, moment@>=2.14.0, moment@^2.9.0:
   version "2.18.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
 
@@ -4001,6 +4005,12 @@ ng-router-loader@2.1.0:
     loader-utils "^0.2.16"
     recast "^0.11.20"
 
+ng2-bootstrap@^1.6.3:
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/ng2-bootstrap/-/ng2-bootstrap-1.6.3.tgz#8bef6179d7436ba547901447f18fee8fff4355c2"
+  dependencies:
+    moment "2.18.1"
+
 ng2-ckeditor@1.1.6:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/ng2-ckeditor/-/ng2-ckeditor-1.1.6.tgz#fa3afb86982b725f7f3a609924c64821c2719875"
@@ -4009,12 +4019,24 @@ ng2-completer@1.3.1, ng2-completer@^1.2.2:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/ng2-completer/-/ng2-completer-1.3.1.tgz#f75dba1a0b376c2e6b49f73ce2b2d7c29614a555"
 
+ng2-jwt@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/ng2-jwt/-/ng2-jwt-0.2.0.tgz#1060e2154705e8827b867c9003729cfbaba85227"
+
+ng2-slim-loading-bar@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/ng2-slim-loading-bar/-/ng2-slim-loading-bar-4.0.0.tgz#7256fdde7c058f14955a3ef2e65afafb5b664603"
+
 ng2-smart-table@1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/ng2-smart-table/-/ng2-smart-table-1.0.3.tgz#259f12564044aa87f6a86885fa16fbe6be8c2439"
   dependencies:
     lodash "^4.17.4"
     ng2-completer "^1.2.2"
+
+ng2-table@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/ng2-table/-/ng2-table-1.3.2.tgz#2ae8d3c4bec4ca8c476c685c41ec4a3a4414c2d4"
 
 ng2-tree@2.0.0-alpha.5:
   version "2.0.0-alpha.5"
@@ -6331,6 +6353,10 @@ tsickle@^0.21.0:
 tslib@1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.6.0.tgz#cf36c93e02ae86a20fc131eae511162b869a6652"
+
+tslib@^1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.7.1.tgz#bc8004164691923a79fe8378bbeb3da2017538ec"
 
 tslint@4.5.1:
   version "4.5.1"
