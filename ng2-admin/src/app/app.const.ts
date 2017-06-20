@@ -21,6 +21,8 @@ export const CONSTANTS = {
       page: "/api/menu/page",//查询菜单信息
       delete: "/api/menu/delete",//根据Id删除菜单信息
       add: "/api/menu/add"//新增菜单
+      parentList:"api/menu/parentList"//获取父级菜单
+
     }
   },
   HTTPStatus: {

@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,14 +39,24 @@ public class MenuController extends BaseController {
         return new ResponseEntity<String>(menuJson, HttpStatus.OK);
     }
 
-
+    @RequestMapping(value = "/menu/parentList", method = RequestMethod.GET  ,produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ApiOperation(value = "获取父级菜单列表-用于菜单页面下拉框", httpMethod = "GET",response = List.class)
+    public ResponseEntity<List<Menu>> parentList() {
+        List<Menu> menuList =   menuService.findByDeleteFlagAndParentId(false,null);
+        return new ResponseEntity(menuList, HttpStatus.OK);
+    }
     @RequestMapping(value = "/menu/page", method = RequestMethod.GET  ,produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ApiOperation(value = "获取菜单列表-分页", httpMethod = "GET",response = Page.class)
     public ResponseEntity<Page<MenuVo>> page(@ApiParam(value = "用户参数", required = true) MenuParam menuParam) {
         Page<MenuVo> menuPage =   menuService.page(menuParam);
         return new ResponseEntity<Page<MenuVo>>(menuPage, HttpStatus.OK);
     }
-
+    @RequestMapping(value = "/menu/add", method = RequestMethod.POST  ,produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ApiOperation(value = "新增菜单信息", httpMethod = "POST",response = Page.class)
+    public ResponseEntity<String> add(@RequestBody @ApiParam(value = "用户参数", required = true) MenuParam menuParam) {
+        menuService.save(menuParam);
+        return new ResponseEntity<String>("操作成功", HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/menu/delete/{id}", method = RequestMethod.DELETE)
     @ApiOperation(value = "删除用户", httpMethod = "DELETE", response = String.class, notes = "")

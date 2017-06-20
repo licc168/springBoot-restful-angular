@@ -30,9 +30,13 @@ export class MenuService {
   deleteById(id:number){
     return this.http.delete(CONSTANTS.API_URL.menu.delete+"/"+id).map((response: Response) => response);
   }
-
+   
   saveMenu(menu:Menu){
     return this.http.post(CONSTANTS.API_URL.menu.add,menu).map((response: Response) => response);
+  }
+
+  parentList(){
+        return this.http.get(CONSTANTS.API_URL.menu.parentList).map((response: Response) => response);
   }
 
 }

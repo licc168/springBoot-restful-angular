@@ -55,17 +55,5 @@ export class MenuListComponent implements OnInit {
       })
   }
 
-  saveMenu(menu: Menu) {
-    this.menuService.saveMenu(menu).subscribe(
-      res => {
-        if (res.status === CONSTANTS.HTTPStatus.SUCCESS) {
-
-
-        }
-      },
-      error => {
-
-
-      })
-  }
+ 
 }

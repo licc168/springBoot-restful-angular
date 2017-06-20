@@ -8,17 +8,41 @@
   </button>
 </div>
 <div class="modal-body" >
-  <form (ngSubmit)="saveMenu()">
-    <div class="form-group ">
-      <label for="name" class="text-center  ">名称：</label>
-      <div class="col-sm-8">
-        <input type="text" class="form-control" id="name" name="name" placeholder="请输入" [(ngModel)]="name">
-      </div>
-    </div>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form-horizontal">
+<div class="form-group">
+  <label for="menu">上级菜单</label>
+  <select formControlName="parentId"  class="form-control"  id="parentId">
+      <option   value="">根菜单</option>
+      <option  *ngFor="let menu of menus" value="{{menu.id}}">{{menu.title}}</option>
+
+  </select>
+</div>
+  <div class="form-group">
+    <label for="title">标题</label>
+    <input  formControlName="title" type="text" class="form-control" id="title"  placeholder="标题">
+  </div>
+  <div class="form-group">
+    <label for="input02">图标</label>
+    <input formControlName="icon"  type="text" class="form-control" id="icon" placeholder="图标">
+  </div>
+  <div class="form-group">
+    <label for="input03">路径</label>
+    <input type="text" formControlName="path" class="form-control " id="path" placeholder="路径">
+  </div>
+  <div class="form-group">
+    <label for="input04">排序</label>
+    <input  type="number" formControlName="orderNum" class="form-control" id="orderNum" placeholder="排序">
+  </div> 
+
 
     <div class="modal-footer" style="padding-bottom: 0">
       <button type="button" class="btn btn-secondary" aria-label="Close" (click)="activeModal.close('Close click')">关闭</button>
-      <button type="submit" class="btn btn-primary">保存</button>
+      <button [disabled]="!form.valid" type="submit" class="btn btn-primary" >保存</button>
     </div>
-  </form>
+</form>
+
+
+
+
 </div>

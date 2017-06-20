@@ -1,6 +1,6 @@
 import {NgModule, Component}      from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgaModule} from '../../theme/nga.module';
 import {routing}       from './menu.routing.ts';
 import {MenuComponent} from './menu.component.ts';
@@ -16,6 +16,7 @@ import {MenuSaveComponent} from "./components/save/menuSave.component";
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule，
     NgaModule,
     NgbDropdownModule,
     NgbModalModule,

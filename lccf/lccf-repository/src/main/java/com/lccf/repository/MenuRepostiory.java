@@ -9,5 +9,4 @@ import com.lccf.domain.Menu;
 public interface MenuRepostiory extends JpaRepository<Menu, Long> {
 	List<Menu> findByDeleteFlagAndParentId(Boolean deleteFlag,Long parentId);
 
-	List<Menu> findById(Long id);
 }

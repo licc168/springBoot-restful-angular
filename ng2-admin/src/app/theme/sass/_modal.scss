@@ -1,3 +1,13 @@
+.modal-content{
+  position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color:  #5bc0de !important;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    outline: 0;
+}
 .modal-header {
   border: none;
   padding: 10px 15px 0 15px;
