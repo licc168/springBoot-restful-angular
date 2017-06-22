@@ -1,6 +1,5 @@
 
 <div class="modal-header">
-
   <h4 class="modal-title" id="myModalLabel">添加功能菜单</h4><hr/>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.close('Close click')">
     <span aria-hidden="true">&times;</span>
@@ -8,10 +7,9 @@
   </button>
 </div>
 <div class="modal-body" >
-
 <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form-horizontal">
 <div class="form-group">
-  <label for="menu">上级菜单</label>
+  <label for="parentId">上级菜单</label>
   <select formControlName="parentId"  class="form-control"  id="parentId">
       <option   value="">根菜单</option>
       <option  *ngFor="let menu of menus" value="{{menu.id}}">{{menu.title}}</option>
@@ -23,26 +21,22 @@
     <input  formControlName="title" type="text" class="form-control" id="title"  placeholder="标题">
   </div>
   <div class="form-group">
-    <label for="input02">图标</label>
+    <label for="icon">图标</label>
     <input formControlName="icon"  type="text" class="form-control" id="icon" placeholder="图标">
   </div>
   <div class="form-group">
-    <label for="input03">路径</label>
+    <label for="path">路径</label>
     <input type="text" formControlName="path" class="form-control " id="path" placeholder="路径">
   </div>
   <div class="form-group">
-    <label for="input04">排序</label>
+    <label for="orderNum">排序</label>
     <input  type="number" formControlName="orderNum" class="form-control" id="orderNum" placeholder="排序">
-  </div> 
-
-
+  </div>
     <div class="modal-footer" style="padding-bottom: 0">
       <button type="button" class="btn btn-secondary" aria-label="Close" (click)="activeModal.close('Close click')">关闭</button>
       <button [disabled]="!form.valid" type="submit" class="btn btn-primary" >保存</button>
     </div>
 </form>
-
-
-
+  <msgTip [message]="msg" [isOpen]="openMsgTip" (output)="openMsgTip=$event;opearSuccess()"></msgTip>
 
 </div>

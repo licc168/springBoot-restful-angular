@@ -5,5 +5,5 @@
 
 module.exports = {
   // api服务器
-  SERVER_ADDRESS: "http://localhost:8088",
+  SERVER_ADDRESS: "http://localhost:8070",
 };

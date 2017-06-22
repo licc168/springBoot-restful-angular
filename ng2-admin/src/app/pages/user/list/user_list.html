@@ -14,24 +14,17 @@
                 </tr>
                 </thead>
                 <tbody style="word-break: keep-all">
-                <tr *ngFor="let item of roleListData,let i = index ">
+                <tr *ngFor="let item of userListData,let i = index ">
                     <td>{{i+1}}</td>
                     <td>{{item.name}}</td>
-                    <td>{{item.description}}</td>
+                    <td>{{item.email}}</td>
                     <!-- <td></td> -->
                     <td>{{item.createdDate | slice:0:10}}</td>
                     <td>
-                    
-                        <a href="javascript:;" class="btn btn-success btn-xs" title="编辑"  (click)="getCurRole(item.id,addModal)">编辑</a>
-                        <a href="javascript:;" class="btn btn-success btn-xs" title="权限"  (click)="setMenu(item.name,item.id,menusListModal)"><!-- (click)='curRoleId=item.id' -->
-                            分配菜单
-                        </a>
-                        <a href="javascript:;" class="btn btn-success btn-xs" title="权限"  (click)="setAuth(item.name,item.id,authManageModal)"><!-- (click)='curRoleId=item.id' -->
-                            分配权限
-                        </a>
-                        <a href="javascript:;" class="btn btn-success btn-xs" data-toggle="modal" data-target="#confirmdeleteModal" title="删除"   (click)='curRoleId=item.id' >
-                            删除
-                        </a>
+
+                      <a href="javascript:;" class="btn btn-success btn-xs" data-toggle="modal" data-target="#confirmdeleteModal" title="删除"   (click)='deleteById(item.id)' >
+                        删除
+                      </a>
                     </td>
                 </tr>
                 </tbody>

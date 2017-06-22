@@ -9,18 +9,21 @@ import {MenuService} from "../../services/menu.service";
 import {NgbDropdownModule, NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {PagerModule} from "../pager/pager.module";
+import {MsgTipModule} from "../common/msg-tip/msg-tip.module";
 import {MenuSaveComponent} from "./components/save/menuSave.component";
+
 
 @NgModule({
 
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule，
+    ReactiveFormsModule,
     NgaModule,
     NgbDropdownModule,
     NgbModalModule,
     PagerModule,
+    MsgTipModule,
     routing
   ],
   declarations: [

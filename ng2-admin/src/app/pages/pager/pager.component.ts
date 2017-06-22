@@ -55,6 +55,7 @@ export class Pager {
 	}
 	// 下一页
 	nextPage () {
+
 		if( this.curPage >= this.totalPages ) {
 			return false;
 		}

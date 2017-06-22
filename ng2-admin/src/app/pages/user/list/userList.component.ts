@@ -39,6 +39,7 @@ export class UserListComponent implements OnInit {
       res => {
         if (res.status === CONSTANTS.HTTPStatus.SUCCESS) {
           let data = JSON.parse(res.text());
+
           this.totalElements = data.totalElements;
           this.totalPages = data.totalPages;
           this.userListData = data.content;
