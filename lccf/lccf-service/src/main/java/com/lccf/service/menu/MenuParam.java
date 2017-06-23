@@ -8,6 +8,7 @@ import javax.persistence.Column;
  * @date 2017 -05-02 20:47:49
  */
 public class MenuParam extends PageParam{
+  private Long id;
   private String path;
   private String title;
   private String icon;
@@ -16,6 +17,14 @@ public class MenuParam extends PageParam{
   private Boolean deleteFlag = false;;
   private Long parentId;
   private Integer orderNum;
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
 
   public String getPath() {
     return path;

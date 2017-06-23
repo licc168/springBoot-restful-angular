@@ -17,7 +17,7 @@ export class MenuComponent {
   }
 
   openAdd() {
-    const modalRef = this.modalService.open(MenuSaveComponent,{ windowClass: 'fade-modal',size: 'lg'});
+    const modalRef = this.modalService.open(MenuSaveComponent,{windowClass: 'fade-modal',size: 'lg'});
   }
 
 }

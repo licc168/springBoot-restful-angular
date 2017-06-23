@@ -20,8 +20,9 @@ export const CONSTANTS = {
       list: "/api/menu/list",//首页加载菜单列表
       page: "/api/menu/page",//查询菜单信息
       delete: "/api/menu/delete",//根据Id删除菜单信息
-      add: "/api/menu/add"//新增菜单
-      parentList:"api/menu/parentList"//获取父级菜单
+      save: "/api/menu/save",//新增和编辑菜单
+      parentList:"api/menu/parentList",//获取父级菜单
+      getById:"api/menu/get"//根据Id获取菜单信息
 
     }
   },

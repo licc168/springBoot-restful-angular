@@ -14,23 +14,25 @@ export class MenuSaveComponent implements OnInit {
   public form: FormGroup;
   public openMsgTip: boolean = false;
   public msg: String;
-  public title: AbstractControl;
+
 
   constructor(public activeModal: NgbActiveModal, fb: FormBuilder, private menuService: MenuService) {
 
     this.form = fb.group({
+      'id': [''],
       'title': ['', Validators.compose([Validators.required])],
       'parentId': [''],
       'icon': [''],
       'path': ['', Validators.compose([Validators.required])],
       'orderNum': [''],
     });
-
-
+   
+   
   }
 
   ngOnInit(): void {
     this.parentList();
+
   }
 
   parentList() {
@@ -67,6 +69,7 @@ export class MenuSaveComponent implements OnInit {
   }
 
   public  opearSuccess(): void {
+     window.document.documentElement.ownerDocument.getElementById("queryMenu").click();
     this.activeModal.close();
   }
 

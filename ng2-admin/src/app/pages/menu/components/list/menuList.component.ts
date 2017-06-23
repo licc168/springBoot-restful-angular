@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit,Input} from '@angular/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {MenuService} from "../../../../services/menu.service";
 import {Menu} from "../../../../models/menu";
@@ -16,6 +16,9 @@ export class MenuListComponent implements OnInit {
   private totalElements; // 总条数
   private openMsgTip: boolean = false;
   private msg: String;
+  @Input()  menu:Menu = new Menu;
+
+
   constructor(private menuService: MenuService, private modalService: NgbModal) {
 
   }
@@ -49,16 +52,47 @@ export class MenuListComponent implements OnInit {
         if (res.status === CONSTANTS.HTTPStatus.SUCCESS) {
           this.openMsgTip = true;
           this.msg="删除成功";
+        }else{
+
+          this.openMsgTip = true;
+          this.msg="删除失败";
+
         }
       },
       error => {
-
+       
+        this.openMsgTip = true;
+          this.msg="删除失败";
 
       })
   }
   openAdd() {
     const modalRef = this.modalService.open(MenuSaveComponent,{ windowClass: 'fade-modal',size: 'lg'});
+    modalRef.componentInstance.menu = this.menu;
   }
+  
+
+ openEdit(id:number) {
+   debugger
+     this.menuService.getById(id).subscribe(
+      res => {
+        if (res.status === CONSTANTS.HTTPStatus.SUCCESS) {
+          this.menu = JSON.parse(res.text());
+          const modalRef = this.modalService.open(MenuSaveComponent,{ windowClass: 'fade-modal',size: 'lg'});
+          modalRef.componentInstance.menu = this.menu;
+
+        }
+      },
+      error => {
+         this.openMsgTip = true;
+          this.msg="系统异常";
+
+      })
+
+    
+ }
+
+
   public  opearSuccess(): void {
     this.getPageData(1);
   }

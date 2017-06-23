@@ -32,11 +32,13 @@ export class MenuService {
   }
    
   saveMenu(menu:Menu){
-    return this.http.post(CONSTANTS.API_URL.menu.add,menu).map((response: Response) => response);
+    return this.http.post(CONSTANTS.API_URL.menu.save,menu).map((response: Response) => response);
   }
 
   parentList(){
         return this.http.get(CONSTANTS.API_URL.menu.parentList).map((response: Response) => response);
   }
-
+  getById(id:number){
+        return this.http.get(CONSTANTS.API_URL.menu.getById+"/"+id).map((response: Response) => response);
+  }
 }

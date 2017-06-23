@@ -1,6 +1,6 @@
 
 <div class="divbutton">
-  <button class="btn btn-primary btn-lg"  type="button" (click)="getPageData(1)" >查询</button>
+  <button class="btn btn-primary btn-lg" id="queryMenu"  type="button" (click)="getPageData(1)" >查询</button>
   <button class="btn btn-primary btn-lg"  type="button" (click)="openAdd()" >增加菜单</button>
 </div>
 <div class="row">
@@ -28,6 +28,9 @@
                         <a href="javascript:;" class="btn btn-success btn-xs" data-toggle="modal" data-target="#confirmdeleteModal" title="删除"   (click)='deleteById(item.id)' >
                             删除
                         </a>
+                          <a href="javascript:;" class="btn btn-success btn-xs" data-toggle="modal" data-target="#confirmdeleteModal" title="删除"   (click)='openEdit(item.id)' >
+                            编辑
+                        </a>
                     </td>
                 </tr>
                 </tbody>
@@ -36,9 +39,6 @@
     </div>
 </div>
 <pager [totalPage]="totalPages" [totalElement]="totalElements" [page]="curPage" (output)="this.getPageData($event)"></pager>
-
-
-
 <msgTip [message]="msg" [isOpen]="openMsgTip" (output)="openMsgTip=$event;opearSuccess()"></msgTip>
 
 <!----------------------------------------------------------------模态框---------------------------------------------------------------------->

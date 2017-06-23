@@ -10,32 +10,34 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form-horizontal">
 <div class="form-group">
   <label for="parentId">上级菜单</label>
-  <select formControlName="parentId"  class="form-control"  id="parentId">
+  <select formControlName="parentId"  class="form-control"  [ngModel]="menu.parentId" id="parentId">
       <option   value="">根菜单</option>
-      <option  *ngFor="let menu of menus" value="{{menu.id}}">{{menu.title}}</option>
+      <option  *ngFor="let item of menus" value="{{item.id}}">{{item.title}}</option>
 
   </select>
 </div>
   <div class="form-group">
     <label for="title">标题</label>
-    <input  formControlName="title" type="text" class="form-control" id="title"  placeholder="标题">
+      
+    <input  formControlName="title"  [ngModel]="menu.title" type="text" class="form-control" id="title"  placeholder="标题">
   </div>
   <div class="form-group">
     <label for="icon">图标</label>
-    <input formControlName="icon"  type="text" class="form-control" id="icon" placeholder="图标">
+    <input formControlName="icon"  type="text" [ngModel]="menu.icon"  class="form-control" id="icon" placeholder="图标">
   </div>
   <div class="form-group">
     <label for="path">路径</label>
-    <input type="text" formControlName="path" class="form-control " id="path" placeholder="路径">
+    <input type="text" formControlName="path"[ngModel]="menu.path"  class="form-control " id="path" placeholder="路径">
   </div>
   <div class="form-group">
     <label for="orderNum">排序</label>
-    <input  type="number" formControlName="orderNum" class="form-control" id="orderNum" placeholder="排序">
+    <input  type="number" formControlName="orderNum" [ngModel]="menu.orderNum"  class="form-control" id="orderNum" placeholder="排序">
   </div>
     <div class="modal-footer" style="padding-bottom: 0">
       <button type="button" class="btn btn-secondary" aria-label="Close" (click)="activeModal.close('Close click')">关闭</button>
       <button [disabled]="!form.valid" type="submit" class="btn btn-primary" >保存</button>
     </div>
+    <input type="hidden" name="id" [ngModel]="menu.id"  formControlName="id">
 </form>
   <msgTip [message]="msg" [isOpen]="openMsgTip" (output)="openMsgTip=$event;opearSuccess()"></msgTip>
 
