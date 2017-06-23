@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.lccf.domain.Menu;
+import java.util.stream.Collectors;
 
 public class MenuUtil {
     public static String transMenuListTOJson(List<Menu> list) {
@@ -18,15 +19,19 @@ public class MenuUtil {
                 stringBuffer.append("}}},");
             } else {
                 stringBuffer.append("}},'children': [");
-                Set<Menu> childList = menu.getChildren();
+                Set<Menu> childList = menu.getChildren().stream().filter(child->!child.getDeleteFlag()).collect(
+                    Collectors.toSet());
                 int index = 1;
                 for (Menu child : childList) {
-                    String s = "'}}},";
-                    if (index == childList.size()) {
-                        s = "'}}}";
-                    }
-                    stringBuffer.append("{'path':'" + child.getPath() + "','data':{'menu':{'title':'" + child.getTitle()).append(s);
-                    index++;
+                        String s = "'}}},";
+                        if (index == childList.size()) {
+                            s = "'}}}";
+                        }
+                        stringBuffer.append(
+                            "{'path':'" + child.getPath() + "','data':{'menu':{'title':'" + child
+                                .getTitle()).append(s);
+                        index++;
+
                 }
                 ;
                 stringBuffer.append("]},");
