@@ -10,6 +10,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
+ *
+ * <ul>
+ *   <h1>参数说明:</h1>
+ *   <li>T:对应数据库持久化bean</li>
+ *   <li>P:页面接受参数</li>
+ *   <li>V:返回参数</li>
+ * </ul>
  * @author lichangchao
  * @date 2017 -05-02 21:08:56
  */
