@@ -1,5 +1,7 @@
 package com.lccf.controller;
 
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -39,11 +41,12 @@ public class MenuController extends BaseController {
     public ResponseEntity<String> list() {
         List<Menu> menuList = menuService.findByDeleteFlagAndParentId(false, null);
         String menuJson = MenuUtil.transMenuListTOJson(menuList);
-        return new ResponseEntity<String>(menuJson, HttpStatus.OK);
+        return new ResponseEntity<>(menuJson, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/menu/parentList", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    @ApiOperation(value = "获取父级菜单列表-用于菜单页面下拉框", httpMethod = "GET", response = List.class)
+    @ApiOperation(value = "获取父级菜单列表-用于菜单页面下拉框", httpMethod = "GET", response = Menu.class)
+
     public ResponseEntity<List<Menu>> parentList() {
         List<Menu> menuList = menuService.findByDeleteFlagAndParentId(false, null);
         return new ResponseEntity(menuList, HttpStatus.OK);
@@ -51,13 +54,15 @@ public class MenuController extends BaseController {
 
     @RequestMapping(value = "/menu/page", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ApiOperation(value = "获取菜单列表-分页", httpMethod = "GET", response = Page.class)
+
     public ResponseEntity<Page<MenuVo>> page(@ApiParam(value = "用户参数", required = true) MenuParam menuParam) {
         Page<MenuVo> menuPage = menuService.page(menuParam);
         return new ResponseEntity<Page<MenuVo>>(menuPage, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/menu/save", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    @ApiOperation(value = "新增菜单信息", httpMethod = "POST", response = Page.class)
+    @ApiOperation(value = "新增菜单信息", httpMethod = "POST", response = String.class)
+
     public ResponseEntity<String> save(@RequestBody @ApiParam(value = "用户参数", required = true) MenuParam menuParam) {
         menuService.save(menuParam);
         return new ResponseEntity<String>("操作成功", HttpStatus.OK);

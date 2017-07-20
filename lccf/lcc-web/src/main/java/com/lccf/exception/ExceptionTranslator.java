@@ -1,5 +1,6 @@
 package com.lccf.exception;
 
+import com.lccf.service.security.UserDetailsService;
 import java.util.List;
 
 import org.springframework.dao.ConcurrencyFailureException;
@@ -89,7 +90,7 @@ public class ExceptionTranslator {
 
     @ExceptionHandler(value = {UsernameNotFoundException.class,UserNotActivatedException.class})
     @ResponseBody
-    public ErrorDTO loginException(Exception exception) {
+    public ErrorDTO loginException(UsernameNotFoundException exception) {
         return new ErrorDTO(ErrorConstants.ERR_METHOD_NOT_SUPPORTED, exception.getMessage());
     }
 
