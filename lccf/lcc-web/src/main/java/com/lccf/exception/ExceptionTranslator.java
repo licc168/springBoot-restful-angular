@@ -1,99 +1,62 @@
 package com.lccf.exception;
 
-import com.lccf.service.security.UserDetailsService;
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.dao.ConcurrencyFailureException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.web.HttpRequestMethodNotSupportedException;
-import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.lccf.service.security.UserNotActivatedException;
-
-import io.jsonwebtoken.SignatureException;
-
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @ControllerAdvice
 public class ExceptionTranslator {
 
-    @ExceptionHandler(ConcurrencyFailureException.class)
-    @ResponseStatus(HttpStatus.CONFLICT)
+    @ExceptionHandler(value = Exception.class)
     @ResponseBody
-    public ErrorDTO processConcurencyError(ConcurrencyFailureException ex) {
-        return new ErrorDTO(ErrorConstants.ERR_CONCURRENCY_FAILURE);
+    public ResponseEntity<String> loginException(Exception exception, HttpServletRequest request) {
+        String exceptionMsg = getException(exception);
+        HttpStatus status  = getStatus(request);
+        return new ResponseEntity(exceptionMsg, status);
     }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ResponseBody
-    public ErrorDTO processValidationError(MethodArgumentNotValidException ex) {
-        BindingResult result = ex.getBindingResult();
-        List<FieldError> fieldErrors = result.getFieldErrors();
+    /**
+     * 获取错误信息
+     * @param exception
+     * @return
+     */
 
-        return processFieldErrors(fieldErrors);
-    }
-
-    @ExceptionHandler(CustomParameterizedException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ResponseBody
-    public ParameterizedErrorDTO processParameterizedValidationError(CustomParameterizedException ex) {
-        return ex.getErrorDTO();
-    }
-
-    @ExceptionHandler(AccessDeniedException.class)
-    @ResponseStatus(HttpStatus.FORBIDDEN)
-    @ResponseBody
-    public ErrorDTO processAccessDeniedExcpetion(AccessDeniedException e) {
-        return new ErrorDTO(ErrorConstants.ERR_ACCESS_DENIED, e.getMessage());
-    }
-
-    @ExceptionHandler(SignatureException.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ResponseBody
-    public ErrorDTO processSignatureException(AccessDeniedException e) {
-        return new ErrorDTO(ErrorConstants.ERR_ACCESS_DENIED, e.getMessage());
-    }
-
-    private ErrorDTO processFieldErrors(List<FieldError> fieldErrors) {
-        ErrorDTO dto = new ErrorDTO(ErrorConstants.ERR_VALIDATION);
-
-        for (FieldError fieldError : fieldErrors) {
-            dto.add(fieldError.getObjectName(), fieldError.getField(), fieldError.getCode());
+    private String getException(Exception exception) {
+        if (exception instanceof UserNotActivatedException) {
+            return ExceptionConst.USER_NOT_ACTIVATE;
+        } else if (exception instanceof UsernameNotFoundException) {
+            return ExceptionConst.USER_NOT_FOUND;
+        } else {
+            return ExceptionConst.SYS_EXCEPTION;
         }
 
-        return dto;
     }
 
-    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-    @ResponseBody
-    @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
-    public ErrorDTO processMethodNotSupportedException(HttpRequestMethodNotSupportedException exception) {
-        return new ErrorDTO(ErrorConstants.ERR_METHOD_NOT_SUPPORTED, exception.getMessage());
+    /**
+     * 获取错误编码
+     * 
+     * @param request
+     * @return
+     */
+    private HttpStatus getStatus(HttpServletRequest request) {
+        Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
+        if (statusCode == null) {
+            return HttpStatus.INTERNAL_SERVER_ERROR;
+        }
+        try {
+            return HttpStatus.valueOf(statusCode);
+        } catch (Exception ex) {
+            return HttpStatus.INTERNAL_SERVER_ERROR;
+        }
     }
-    @ExceptionHandler(Exception.class)
-    @ResponseBody
-
-    public ResponseEntity<ErrorDTO> processIllegalArgumentException(Exception exception) {
-
-        return new ResponseEntity(new ErrorDTO(ErrorConstants.ERR_VALIDATION, exception.getMessage()),
-            HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler(value = {UsernameNotFoundException.class,UserNotActivatedException.class})
-    @ResponseBody
-    public ErrorDTO loginException(UsernameNotFoundException exception) {
-        return new ErrorDTO(ErrorConstants.ERR_METHOD_NOT_SUPPORTED, exception.getMessage());
-    }
-
-
 
 }
