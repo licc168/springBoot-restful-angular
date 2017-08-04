@@ -23,16 +23,13 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <includes>
-                        <include>**/*Documentation.java</include>
+                        <include>com.lccf.Documentation</include>
                     </includes>
                 </configuration>
             </plugin>
@@ -43,8 +40,11 @@
 
                 <!-- Configure generic document generation settings -->
                 <configuration>
-                    <sourceDirectory>${project.basedir}/docs/asciidoc</sourceDirectory>
-                    <sourceDocumentName>index.adoc</sourceDocumentName>
+                    <sourceDirectory>target/asciidoc</sourceDirectory>
+                    <sourceDocumentName>paths.adoc</sourceDocumentName>
+                    <sourceDocumentName>definitions.adoc</sourceDocumentName>
+                    <sourceDocumentName>overview.adoc</sourceDocumentName>
+
                     <attributes>
                         <doctype>book</doctype>
                         <toc>left</toc>
@@ -56,6 +56,8 @@
                         <generated>${project.build.directory}/asciidoc</generated>
                     </attributes>
                 </configuration>
+
+
                 <!-- Since each execution can only handle one backend, run
                      separate executions for each desired output type -->
                 <executions>
