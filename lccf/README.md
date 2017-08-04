@@ -7,4 +7,5 @@
    > - **发送邮件:**[MailService](lccf-service/src/main/java/com/lccf/service/mail/MailService.java)
    > - **公用service封装:**[BaseServiceImpl](lccf-service/src/main/java/com/lccf/service/base/impl/BaseServiceImpl.java)
    > - **swagger** 
+   > - **统一参数校验:**  [BindingResultAop](lcc-web/src/main/java/com/lccf/aop/BindingResultAop.java)
   

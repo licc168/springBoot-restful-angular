@@ -6,6 +6,7 @@ import com.lccf.service.user.IUserService;
 import com.lccf.service.user.UserParam;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import javax.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -27,7 +28,7 @@ public class UserController extends BaseController {
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST, produces = MediaType.TEXT_PLAIN_VALUE)
     @ApiOperation(value = "注册用户", httpMethod = "POST", response = String.class, notes = "注册接口（用户名/邮箱/密码）")
-    public ResponseEntity<String> register(@RequestBody @ApiParam(value = "用户参数", required = true) UserParam userParam) {
+    public ResponseEntity<String> register(@Valid @RequestBody @ApiParam(value = "用户参数", required = true) UserParam userParam) {
         userService.register(userParam);
         return new ResponseEntity<String>("注册成功", HttpStatus.OK);
     }

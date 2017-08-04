@@ -1,6 +1,7 @@
 package com.lccf.service.user;
 
 import com.lccf.service.base.PageParam;
+import javax.validation.constraints.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
@@ -11,6 +12,7 @@ import java.io.Serializable;
  */
 public class UserParam extends PageParam implements Serializable {
     private Long id;
+    @NotNull(message = "用户名不能为空")
     private String userName;
 
     private String realName;
