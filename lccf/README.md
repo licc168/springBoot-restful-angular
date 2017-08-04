@@ -4,7 +4,7 @@
    > - **权限:** ```JWT+SpringSecurity+cookie```
    > - **统一异常:** [ExceptionTranslator](lcc-web/src/main/java/com/lccf/exception/ExceptionTranslator.java)
    > - **缓存:** ```内存缓存采用guava  nosql采用redis 详见CacheConfig```
-   > - **发送邮件:**[MailService](lccf-service/src/main/java/com/lccf/service/mail/MailService.java)
+   > - **发送邮件**
    > - **公用service封装:**[BaseServiceImpl](lccf-service/src/main/java/com/lccf/service/base/impl/BaseServiceImpl.java)
    > - **swagger** 
    > - **统一参数校验:**  [BindingResultAop](lcc-web/src/main/java/com/lccf/aop/BindingResultAop.java)
