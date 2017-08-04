@@ -41,7 +41,7 @@ public class UserController extends BaseController {
     @ApiOperation(value = "获取用户数据", httpMethod = "GET", response = Page.class, notes = "")
     public ResponseEntity<Page<User>> page(@ApiParam(value = "用户参数", required = true) UserParam userParam) {
         Page<User> userPage =  userService.page(userParam);
-        return new ResponseEntity<Page<User>>(userPage, HttpStatus.OK);
+        return new ResponseEntity<>(userPage, HttpStatus.OK);
     }
 
 
@@ -49,6 +49,6 @@ public class UserController extends BaseController {
     @ApiOperation(value = "删除用户", httpMethod = "DELETE", response = String.class, notes = "")
     public ResponseEntity<String> deleteById(@ApiParam(value = "用户ID", required = true) @PathVariable Long id) {
         userService.deleteById(id);
-        return new ResponseEntity<String>("操作成功", HttpStatus.OK);
+        return new ResponseEntity<>("操作成功", HttpStatus.NO_CONTENT);
     }
 }

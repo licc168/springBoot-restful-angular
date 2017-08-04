@@ -53,7 +53,7 @@ public class Documentation {
 
     @Test
     public void testLogin() throws Exception {
-        mockMvc.perform(get("/login").param("userName", "admin").param("password", "111111").accept(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/login").param("userName", "admin1").param("password", "111111").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk()).andDo(document("login", preprocessResponse(prettyPrint())));
 
     }

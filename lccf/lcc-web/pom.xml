@@ -19,6 +19,8 @@
             <version>${project.version}</version>
         </dependency>
 
+
+
     </dependencies>
 
     <build>
@@ -41,9 +43,10 @@
                 <!-- Configure generic document generation settings -->
                 <configuration>
                     <sourceDirectory>target/asciidoc</sourceDirectory>
-                    <sourceDocumentName>paths.adoc</sourceDocumentName>
                     <sourceDocumentName>definitions.adoc</sourceDocumentName>
                     <sourceDocumentName>overview.adoc</sourceDocumentName>
+                    <sourceDocumentName>paths.adoc</sourceDocumentName>
+
 
                     <attributes>
                         <doctype>book</doctype>

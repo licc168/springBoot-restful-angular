@@ -1,0 +1,31 @@
+Configuration:
+  status: debug
+  Appenders:
+    Console: #输出到控制台
+      name: Console
+      PatternLayout:
+        Pattern: '%highlight{%d{HH:mm:ss.SSS} [%t] %-5level %logger{1.}:%L - %msg%n}{%throwable{short.fileName}}{FATAL=white,ERROR=red,
+          WARN=blue, INFO=black, DEBUG=green, TRACE=blue}'
+      target: SYSTEM_OUT
+     RollingFile: # 输出到文件，超过2048MB归档
+    - name:  RollingFile_Appender
+      fileName:  /logs/events-csg-adapter/app.log
+      filePattern: "/logs/events-csg-adapter/event-csg-adapter-%i.log.%d{yyyy-MM-dd}"
+      PatternLayout: #设置日志级别的颜色
+        pattern: '%highlight{%d{HH:mm:ss.SSS} [%t] %-5level %logger{1.}:%L - %msg%n}{%throwable{short.fileName}}{FATAL=white,ERROR=red,
+                           WARN=blue, INFO=black, DEBUG=green, TRACE=blue}'
+      Policies:
+        SizeBasedTriggeringPolicy:
+          size: 2048 M
+        DefaultRollOverStrategy:
+          max: 10
+  Loggers:
+    Root:
+      AppenderRef:
+      - ref: Console
+      - ref: RollingFile_Appender
+    logger:
+    - name: org.springframework
+      level: debug
+    - name: com.apricotforest.events
+      level: debug
