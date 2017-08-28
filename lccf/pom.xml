@@ -12,7 +12,6 @@
 	<modules>
 		<module>lccf-repository</module>
 		<module>lcc-web</module>
-		<module>lccf-test</module>
 		<module>lccf-service</module>
 		<module>lccf-util</module>
 
@@ -221,18 +220,7 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
-     <!--spring 热部署  mvn spring-boot:run-->
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<dependencies>
-					<dependency>
-						<groupId>org.springframework</groupId>
-						<artifactId>springloaded</artifactId>
-						<version>1.2.6.RELEASE</version>
-					</dependency>
-				</dependencies>
-			</plugin>
+
 
 
 		</plugins>

@@ -10,7 +10,7 @@ spring:
         livereload:
             enabled: false
     datasource:
-        url: jdbc:mysql://localhost:3306/lccf?useUnicode=true&characterEncoding=utf8&useSSL=false
+        url: jdbc:mysql://47.94.196.111:3306/lccf?useUnicode=true&characterEncoding=utf8&useSSL=false
         name:
         username: root
         password: 111111
