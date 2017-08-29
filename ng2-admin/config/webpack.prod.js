@@ -17,8 +17,8 @@ const OptimizeJsPlugin = require('optimize-js-plugin');
  * Webpack Constants
  */
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
-const HOST = process.env.HOST || 'localhost';
-const PORT = process.env.PORT || 8080;
+const HOST = process.env.HOST || '47.94.196.111';
+const PORT = Number(process.env.PORT) || 3000;
 const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
   host: HOST,
   port: PORT,
@@ -237,7 +237,32 @@ module.exports = function (env) {
             resourcePath: 'src'
           },
 
+          devServer: {
+            port: METADATA.port,
+            host: METADATA.host,
+            historyApiFallback: {
+              index: '/index.html'
+            },
+            watchOptions: {
+              aggregateTimeout: 300,
+              poll: 1000
+            },
 
+            proxy: {
+              '/api/*': {
+                target: address.SERVER_ADDRESS,
+                changeOrigin:true,
+                secure: false
+              },
+              '/login': {
+                target: address.SERVER_ADDRESS,
+                changeOrigin:true,
+                secure: false
+              }
+
+
+            }
+          },
           /**
            * Html loader advanced options
            *
