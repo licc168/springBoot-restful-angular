@@ -1,16 +1,16 @@
-# boot+ng2前后端分离框架
-## 项目说明
-> - **[lccf](https://github.com/licc168/web/blob/master/lccf/README.md)** :springboot 后端
-> - **[ng2-admin](https://github.com/licc168/web/blob/master/ng2-admin/README.md 'ng2-admin开源基础上修改')**:ng4前端
-> 
-## 效果图
+# springBoot-restful-angular
+## 项目介绍
+ - 后端:[admin-api](https://github.com/licc168/admin-api )
+ - 前端:[admin-angluar](https://github.com/licc168/admin-angluar)
+ 
+## DEMO
+ - 接口地址:[api](http://47.94.196.111:8080/swagger-ui.html)
+ - 项目地址:[demo](http://47.94.196.111:3000)
+ 
 
-![](http://lichangchao.top/img/web/login.png)
-![](http://lichangchao.top/img/web/register.png)
-![](http://lichangchao.top/img/web/user.png)
-![](http://lichangchao.top/img/web/menu.png)
-## **联系方式**
 
-* email: liccwork@126.com
+     
+    
+
 
 
